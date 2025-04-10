@@ -30,7 +30,7 @@ def save_joins_data(data):
         json.dump(data, f, indent=4)
 
 
-# Invites beim Botstart cachen
+
 @bot.event
 async def on_ready():
     print(f"Eingeloggt als {bot.user}")
@@ -72,7 +72,7 @@ async def on_member_join(member):
         print(f"{member} wurde von {used_invite.inviter} eingeladen")
 
 
-# Wenn jemand den Server verlässt
+
 @bot.event
 async def on_member_remove(member):
     data = load_joins_data()
@@ -147,7 +147,7 @@ async def who_invited(interaction: discord.Interaction, user: discord.User):
     user_id = str(user.id)
     inviter_id = None
 
-    # Suchen, wer diesen User eingeladen hat
+
     for inviter, info in data.items():
         if user_id in info.get("invited_users", []):
             inviter_id = inviter
@@ -165,5 +165,5 @@ async def who_invited(interaction: discord.Interaction, user: discord.User):
 
 
 
-# ===== Starte den Bot =====
+
 bot.run("TOKEN")
