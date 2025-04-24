@@ -12,7 +12,6 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 invite_cache = {}
 
 
-# JSON laden/speichern
 def load_joins_data():
     if not os.path.exists("joins.json"):
         with open("joins.json", "w") as f:
@@ -43,7 +42,6 @@ async def on_ready():
         print(f"Fehler beim Syncen: {e}")
 
 
-# Wenn jemand joint
 @bot.event
 async def on_member_join(member):
     new_invites = await member.guild.invites()
@@ -87,7 +85,6 @@ async def on_member_remove(member):
             break
 
 
-# Slash Command: /invites
 @bot.tree.command(name="invites", description="Zeigt, wie viele Invites ein Benutzer hat.")
 @app_commands.describe(user="Der Benutzer, dessen Invites du sehen willst (optional)")
 async def invites(interaction: discord.Interaction, user: discord.User = None):
